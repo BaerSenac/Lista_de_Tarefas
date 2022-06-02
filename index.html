@@ -27,6 +27,7 @@
       background-color: rgb(44, 62, 77);
       padding: 55px;
       border-radius: 12px;
+      font-weight: bold;
       
 
   }
@@ -78,7 +79,7 @@
   #listaTarefas li {
      background: #fff; 
      padding: 15px;
-     color: rgb(33, 46, 58);
+     color: rgb(58, 83, 105);
      border-radius: 5px;
      justify-content: space-between;
      display: flex;
@@ -211,7 +212,7 @@
     <div class="content">
         <h1>TO DO LIST</h1>
         <div class="topo">
-            <input type="text" id="inputNovaTarefa" placeholder="Adicione uma nova tarefa">
+            <input type="text" id="inputNovaTarefa" placeholder="Adicione uma nova tarefa" maxlength=35>
             <button id="btnAddTarefa" class="btnAdd">
                 <i class="fa fa-plus"></i>
             </button>
@@ -229,7 +230,7 @@
             <form>
                 <div class="frm-linha">
                 <label for="nome">Nome</label>
-                <input type="text" id="inputTarefaNomeEdicao">
+                <input type="text" id="inputTarefaNomeEdicao" maxlength=35 >
             </div>
             <div class="frm-linha">
                 <button id="btnAtualizarTarefa">Salvar</button>
