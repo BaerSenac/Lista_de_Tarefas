@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tarefas do Dia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <style>
 
@@ -53,15 +54,18 @@
       border: 1px solid rgb(44, 62, 77);
       cursor: pointer;
       background-color: rgb(33, 46, 58);
-      color: rgb(221, 184, 150);
+      color: rgb(243, 203, 166);
       transition: all 0.2s ease-in-out;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
+      
+      
   }
 
   .btnAdd:hover {
-      background-color: #fff;
+      background-color: rgb(231, 194, 159);
       color: rgb(33, 46, 58);
       transition: all 0.2s ease-in-out;
+      transform: scale(1.111);
   }
 
   #listaTarefas {
@@ -75,28 +79,159 @@
      padding: 15px;
      color: rgb(33, 46, 58);
      border-radius: 5px;
-     display: flex;
      justify-content: space-between;
+     display: flex;
      align-items: center;
+     margin-top: 15px;
      
   }
+
+  .btnAcao {
+    width: 40px;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(33, 46, 58);
+    color: rgb(243, 203, 166);
+    transition: all 0.2s ease-in-out;
+    font-size: 15px;
+    margin: 3px;
+    outline: none;
+    
+  }
+
+  .btnAcao:hover {
+      background: rgb(231, 194, 159);
+      border: none;
+      color: rgb(33, 46, 58);
+      transform: scale(1.111);
+      
+  }
+
+  #janelaEdicao {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background: rgb(33, 46, 58);
+    border: 1px solid rgb(33, 46, 58);
+    width: 415px;
+    border-radius: 5px;
+    z-index: 200;
+    display: none;
+
+    
+  }
+
+  #janelaEdicao.abrir {
+    display: block !important;
+  }
+
+  #janelaEdicaoFundo {
+    position: fixed;
+    top: 0;
+    background-color: rgb(33, 46, 58);
+    bottom: 0;
+    left: 0;
+    opacity: 0.9;
+    z-index: 100;
+    right: 0;
+    display: none;
+
+  }
+
+  #janelaEdicaoFundo.abrir {
+    display: block !important;
+  }
+
+  #janelaEdicaoBtnFechar {
+      position: absolute;
+      top: -25px;
+      right: -18px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 1px solid rgb(33, 46, 58);
+      background-color: rgb(23, 32, 41);
+      color: white;
+      cursor: pointer;
+  }
+
+  form {
+      width: 100%;
+      margin-top: 20px;
+  }
+
+  .frm-linha {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+  }
+
+  .frm-linha label {
+      margin-bottom: 7px;
+  }
+
+  .frm-linha input {
+      padding: 10px;
+      border-radius: 5px;
+      outline: none;
+      border: 1px solid  rgb(33, 46, 58);
+      font-size: 1rem;
+      color: rgb(33, 46, 58);
+  }
+
+  .frm-linha button {
+      background: rgb(24, 34, 43);
+      border: 1px solid rgb(33, 46, 58);
+      padding: 7px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      color: aliceblue;
+      cursor: pointer;
+      height: 50px;
+  }
+
+  .frm-linha button:hover {
+      background: rgb(40, 57, 71);
+      transition:  0.5s ;
+  }
+  
+
 
 </style>
 <body>
     <div class="content">
         <div class="topo">
-            <input type="text" id="inputNovaTare" placeholder="Adicione uma nova tarefa">
+            <input type="text" id="inputNovaTarefa" placeholder="Adicione uma nova tarefa">
             <button id="btnAddTarefa" class="btnAdd">
-                +
+                <i class="fa fa-plus"></i>
             </button>
         </div>
-        <ul id="listaTarefas">
-            <li>
-                <span class="textoTarefa">Tarefa 1</span>
-                <button class="btnAcao">editar</button>
-                <button class="btnAcao">apagar</button>
-            </li>
+        <ul id="listaTarefas">      
         </ul>
     </div>
+
+    <div id="janelaEdicao">
+        <button id="janelaEdicaoBtnFechar">
+            <i class="fa fa-remove"></i>
+        </button>
+            <h2 id="idTarefaEdicao">#1021</h2>
+            <hr>
+            <form>
+                <div class="frm-linha">
+                <label for="nome">Nome</label>
+                <input type="text" id="inputTarefaNomeEdicao">
+            </div>
+            <div class="frm-linha">
+                <button id="btnAtualizarTarefa">Salvar</button>
+            </div>
+            </form>
+        </div>
+            <div  id="janelaEdicaoFundo"></div>
+    <script src="tarefas.js"></script>
+    
 </body>
 </html>
